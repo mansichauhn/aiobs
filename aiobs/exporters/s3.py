@@ -186,6 +186,7 @@ class S3Exporter(BaseExporter):
         prefix_env: str = "AIOBS_S3_PREFIX",
         access_key_env: str = "AWS_ACCESS_KEY_ID",
         secret_key_env: str = "AWS_SECRET_ACCESS_KEY",
+        session_token_env: str = "AWS_SESSION_TOKEN",
     ) -> "S3Exporter":
         """Create an S3Exporter from environment variables.
 
@@ -195,6 +196,7 @@ class S3Exporter(BaseExporter):
             prefix_env: Environment variable name for prefix.
             access_key_env: Environment variable name for AWS access key ID.
             secret_key_env: Environment variable name for AWS secret access key.
+            session_token_env: Environment variable name for AWS session token.
 
         Returns:
             Configured S3Exporter instance.
@@ -212,5 +214,8 @@ class S3Exporter(BaseExporter):
             prefix=os.getenv(prefix_env, ""),
             aws_access_key_id=os.getenv(access_key_env),
             aws_secret_access_key=os.getenv(secret_key_env),
+            aws_session_token=os.getenv(session_token_env),
         )
+
+
 
