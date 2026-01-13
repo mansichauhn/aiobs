@@ -12,15 +12,27 @@ Example:
     client = OpenAI()
     llm = LLM.from_client(client, model="gpt-4o")
     
-    # Generate completion
+    # Chat completions
     response = llm.complete("What is 2+2?")
     print(response.content)  # "4"
     
     # Async usage
     response = await llm.complete_async("What is 2+2?")
+    
+    # OpenAI-specific APIs (when using OpenAILLM directly)
+    embeddings = llm.create_embeddings("Hello world")
+    transcription = llm.transcribe_audio("audio.mp3")
+    image = llm.generate_image("A sunset over mountains")
+    moderation = llm.moderate("Check this text")
 
 Supported Providers:
     - OpenAI (and OpenAI-compatible APIs: Azure, Groq, Together, etc.)
+        * Chat Completions
+        * Embeddings
+        * Completions (legacy)
+        * Audio (transcriptions, text-to-speech)
+        * Images (DALL-E)
+        * Moderations
     - Google Gemini
     - Anthropic Claude
 """
